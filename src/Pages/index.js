@@ -1,3 +1,3 @@
-export {default as Home} from './home/Home' 
-export {default as Class} from './classroom/Class' 
-export {default as Coding} from './coding/Coding' 
+export { default as Home } from "./home/Home";
+export { default as ClassRoom } from "./ClassRoom/ClassRoom";
+export { default as Coding } from "./coding/Coding";

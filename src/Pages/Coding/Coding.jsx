@@ -57,27 +57,6 @@ const Coding = () => {
   };
   return (
     <div className="coding">
-      <div className="navbar">
-        <div className="logo">
-          <img src="./images/symbol.png" alt="brand-logo"></img>
-          Coding Classroom
-        </div>
-        <ul className="list">
-          <li>
-            <Link to="/welcome">Home</Link>
-          </li>
-          <li>
-            <Link to="/classroom">Classroom</Link>
-          </li>
-          <li>
-            <Link to="/">Video</Link>
-          </li>
-          <li>
-            <Link to="/coding">Editor</Link>
-          </li>
-        </ul>
-      </div>
-
       <div className="coding-controls">
         <button onClick={onPreviousHandeler} className="coding-button">
           Previous Question

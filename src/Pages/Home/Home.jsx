@@ -5,26 +5,6 @@ import "./Home.css";
 const Home = () => {
   return (
     <div className="home">
-      <div className="navbar">
-        <div className="logo">
-          <img src="./images/symbol.png" alt="brand-logo"></img>
-          Coding Classroom
-        </div>
-        <ul className="list">
-          <li>
-            <Link to="/welcome">Home</Link>
-          </li>
-          <li>
-            <Link to="/classroom">Classroom</Link>
-          </li>
-          <li>
-            <Link to="/">Video</Link>
-          </li>
-          <li>
-            <Link to="/coding">Editor</Link>
-          </li>
-        </ul>
-      </div>
       <div className="header">
         <div className="header-text">
           <div className="header-head">Coding with Community !</div>
