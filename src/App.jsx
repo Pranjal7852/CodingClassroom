@@ -4,6 +4,7 @@ import viteLogo from "/vite.svg";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar/Navbar";
 import { Home, Coding, ClassRoom } from "./Pages/index.js";
+import { ToastContainer } from "react-toastify";
 import "./App.css";
 import { Router } from "react-router-dom";
 
@@ -16,6 +17,7 @@ function App() {
         <Route path="/classroom" element={<ClassRoom></ClassRoom>}></Route>
         <Route path="/coding" element={<Coding></Coding>}></Route>
       </Routes>
+      <ToastContainer />
     </>
   );
 }
