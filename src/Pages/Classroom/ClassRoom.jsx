@@ -1,12 +1,20 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import "./Class.css";
 import { v4 as uuidv4 } from "uuid";
 import { generateUsername } from "unique-username-generator";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
+import { navbarContext } from "../../context/NavbarContext";
+import { useEffect } from "react";
 
 const ClassRoom = () => {
+  const [navState, setNavState] = useContext(navbarContext);
+  useEffect(() => {
+    setNavState(true);
+  }, []);
+  const navigate = useNavigate();
   const createNewRoom = (e) => {
     e.preventDefault();
     const newId = uuidv4();
@@ -16,7 +24,22 @@ const ClassRoom = () => {
     console.log(newId);
     notify();
   };
-
+  const OnEnterPressed = (e) => {
+    if (e.code === "Enter") {
+      joinRoom();
+    }
+  };
+  const joinRoom = () => {
+    if (!userName || !userId) {
+      toast.error("Enter RoomID and Username");
+      return;
+    }
+    navigate(`/editor/${userId}`, {
+      state: {
+        userName,
+      },
+    });
+  };
   const notify = () =>
     toast.success("New RoomId created Successfully !", {
       position: "top-right",
@@ -31,6 +54,7 @@ const ClassRoom = () => {
 
   const [userId, setUserId] = useState("");
   const [userName, setUserName] = useState("");
+
   return (
     <div className="classroom">
       <div className="main">
@@ -43,6 +67,7 @@ const ClassRoom = () => {
               setUserId(e.target.value);
             }}
             value={userId}
+            onKeyUp={OnEnterPressed}
           ></input>
           <input
             placeholder="Enter User Name"
@@ -50,8 +75,11 @@ const ClassRoom = () => {
               setUserName(e.target.value);
             }}
             value={userName}
+            onKeyUp={OnEnterPressed}
           ></input>
-          <button className="coding-button">Join Room</button>
+          <button className="coding-button" onClick={joinRoom}>
+            Join Room
+          </button>
         </form>
         If you don't have an invite, then create{" "}
         <a href="#" onClick={createNewRoom}>

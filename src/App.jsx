@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import { Routes, Route } from "react-router-dom";
@@ -7,15 +7,19 @@ import { Home, Coding, ClassRoom } from "./Pages/index.js";
 import { ToastContainer } from "react-toastify";
 import "./App.css";
 import { Router } from "react-router-dom";
+import { navbarContext, NavbarProvider } from "./context/NavbarContext";
+import Editor from "./Pages/Editor/Editor";
 
 function App() {
+  const [navState, setNavState] = useContext(navbarContext);
   return (
     <>
-      <Navbar />
+      {navState && <Navbar />}
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/classroom" element={<ClassRoom></ClassRoom>}></Route>
         <Route path="/coding" element={<Coding></Coding>}></Route>
+        <Route path="/editor" element={<Editor></Editor>}></Route>
       </Routes>
       <ToastContainer />
     </>
