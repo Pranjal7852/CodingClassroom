@@ -19,7 +19,7 @@ function App() {
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/classroom" element={<ClassRoom></ClassRoom>}></Route>
         <Route path="/coding" element={<Coding></Coding>}></Route>
-        <Route path="/editor/:username" element={<Editor></Editor>}></Route>
+        <Route path="/editor/:roomId" element={<Editor></Editor>}></Route>
       </Routes>
       <ToastContainer />
     </>

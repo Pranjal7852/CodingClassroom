@@ -6,40 +6,53 @@ import EditorPane from "../../Components/EditorPane/EditorPane";
 import { useRef } from "react";
 import { initSocket } from "../../../socket";
 import { ACTIONS } from "../../utils/actions";
-import { useLocation } from "react-router-dom";
-import io from "socket.io-client";
+import {
+  useLocation,
+  useNavigate,
+  Navigate,
+  useParams,
+} from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Editor = () => {
   const [navState, setNavState] = useContext(navbarContext);
   const socketRef = useRef(null);
   const location = useLocation();
-  const socket = io("http://localhost:5000");
+  const { roomId } = useParams();
+  const reactNavigator = useNavigate();
   useEffect(() => {
     setNavState(false);
     async function init() {
       socketRef.current = await initSocket();
+      socketRef.current.on("connect_error", (err) => handleErrors(err));
+      socketRef.current.on("connect_failed", (err) => handleErrors(err));
 
-      // socketRef.current.emit(ACTIONS.JOIN, {
-      //   roomId,
-      //   userName: location.state?.userName,
-      // });
-      console.log("working");
+      function handleErrors(e) {
+        console.log("socket error", e);
+        toast.error("Socket Connection failed Connecting Again");
+        // reactNavigator("/");
+      }
+      // Establish connections
+      socketRef.current.emit(ACTIONS.JOIN, {
+        roomId,
+        userName: location.state?.userName,
+      });
+      // listening for joined
+      socketRef.current.on("joined", ({ clients, userName, socketId }) => {
+        if (userName !== location.state.username) {
+          toast.success(`${userName} joined the room`);
+          console.log(`${userName} joined the room`);
+        }
+        setClient(clients);
+      });
     }
-    socket.on("connect", () => {
-      console.log("Connected to server");
-    });
     init();
   }, []);
 
-  const [client, setClient] = useState([
-    { socketId: 1, userName: "Pranjal Goyal" },
-    { socketId: 2, userName: "Shitij Roodkee" },
-    { socketId: 3, userName: "Pranjal Goyal" },
-    { socketId: 4, userName: "Pranjal Goyal" },
-    { socketId: 5, userName: "Shitij Roodkee" },
-    { socketId: 6, userName: "Pranjal Goyal" },
-  ]);
-
+  const [client, setClient] = useState([]);
+  if (!location.state.userName) {
+    <Navigate to="/" />;
+  }
   return (
     <div className="editor-main">
       <div className="editor-control">

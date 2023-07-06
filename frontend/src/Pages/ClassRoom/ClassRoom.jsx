@@ -15,11 +15,12 @@ const ClassRoom = () => {
     setNavState(true);
   }, []);
   const navigate = useNavigate();
+
   const createNewRoom = (e) => {
     e.preventDefault();
     const newId = uuidv4();
     const rmndUserName = generateUsername(" ");
-    setUserId(newId);
+    setRoomId(newId);
     setUserName(rmndUserName);
     console.log(newId);
     notify();
@@ -30,11 +31,11 @@ const ClassRoom = () => {
     }
   };
   const joinRoom = () => {
-    if (!userName || !userId) {
+    if (!userName || !roomId) {
       toast.error("Enter RoomID and Username");
       return;
     }
-    navigate(`/editor/${userId}`, {
+    navigate(`/editor/${roomId}`, {
       state: {
         userName,
       },
@@ -52,7 +53,7 @@ const ClassRoom = () => {
       theme: "dark",
     });
 
-  const [userId, setUserId] = useState("");
+  const [roomId, setRoomId] = useState("");
   const [userName, setUserName] = useState("");
 
   return (
@@ -64,9 +65,9 @@ const ClassRoom = () => {
           <input
             placeholder="Room ID"
             onChange={(e) => {
-              setUserId(e.target.value);
+              setRoomId(e.target.value);
             }}
-            value={userId}
+            value={roomId}
             onKeyUp={OnEnterPressed}
           ></input>
           <input

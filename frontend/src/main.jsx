@@ -6,11 +6,9 @@ import "./index.css";
 import { NavbarProvider } from "./context/NavbarContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <NavbarProvider>
-        <App />
-      </NavbarProvider>
-    </BrowserRouter>
-  </React.StrictMode>
+  <BrowserRouter>
+    <NavbarProvider>
+      <App />
+    </NavbarProvider>
+  </BrowserRouter>
 );
