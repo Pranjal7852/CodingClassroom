@@ -7,11 +7,13 @@ import { useRef } from "react";
 import { initSocket } from "../../../socket";
 import { ACTIONS } from "../../utils/actions";
 import { useLocation } from "react-router-dom";
+import io from "socket.io-client";
 
 const Editor = () => {
   const [navState, setNavState] = useContext(navbarContext);
   const socketRef = useRef(null);
   const location = useLocation();
+  const socket = io("http://localhost:5000");
   useEffect(() => {
     setNavState(false);
     async function init() {
@@ -21,7 +23,11 @@ const Editor = () => {
       //   roomId,
       //   userName: location.state?.userName,
       // });
+      console.log("working");
     }
+    socket.on("connect", () => {
+      console.log("Connected to server");
+    });
     init();
   }, []);
 
