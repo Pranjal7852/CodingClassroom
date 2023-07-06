@@ -1,13 +1,17 @@
-const express = require("express");
+import express from "express";
+import * as http from "http";
+import { Server } from "socket.io";
+import { defineConfig, loadEnv } from "vite";
+import dotenv from "dotenv";
+dotenv.config();
 const app = express();
-const http = require("http");
-const { Server } = require("socket.io");
+
 const server = http.createServer(app);
 
 const io = new Server(server);
 
 io.on("connection", (socket) => {
-  console.log(socket.id);
+  console.log("connection successfull", socket.id);
 });
 
 const port = process.env.PORT || 5000;
