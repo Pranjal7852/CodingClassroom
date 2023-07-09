@@ -1,6 +1,9 @@
 lockfileVersion: '6.0'
 
 dependencies:
+  '@babel/runtime':
+    specifier: ^7.22.6
+    version: 7.22.6
   '@codemirror/lang-javascript':
     specifier: ^6.1.9
     version: 6.1.9
@@ -13,12 +16,18 @@ dependencies:
   codemirror:
     specifier: '5'
     version: 5.65.13
+  core-js-pure:
+    specifier: ^3.31.1
+    version: 3.31.1
+  prop-types:
+    specifier: ^15.8.1
+    version: 15.8.1
   react:
     specifier: ^18.2.0
     version: 18.2.0
   react-avatar:
     specifier: ^5.0.3
-    version: 5.0.3(@babel/runtime@7.22.6)(core-js-pure@3.31.0)(prop-types@15.8.1)(react@18.2.0)
+    version: 5.0.3(@babel/runtime@7.22.6)(core-js-pure@3.31.1)(prop-types@15.8.1)(react@18.2.0)
   react-dom:
     specifier: ^18.2.0
     version: 18.2.0(react@18.2.0)
@@ -1086,8 +1095,8 @@ packages:
   /convert-source-map@1.9.0:
     resolution: {integrity: sha512-ASFBup0Mz1uyiIjANan1jzLQami9z1PoYSZCiiYW2FczPbenXc45FZdBZLzOT+r6+iciuEModtmCti+hjaAk0A==}
 
-  /core-js-pure@3.31.0:
-    resolution: {integrity: sha512-/AnE9Y4OsJZicCzIe97JP5XoPKQJfTuEG43aEVLFJGOJpyqELod+pE6LEl63DfG1Mp8wX97LDaDpy1GmLEUxlg==}
+  /core-js-pure@3.31.1:
+    resolution: {integrity: sha512-w+C62kvWti0EPs4KPMCMVv9DriHSXfQOCQ94bGGBiEW5rrbtt/Rz8n5Krhfw9cpFyzXBjf3DB3QnPdEzGDY4Fw==}
     requiresBuild: true
     dev: false
 
@@ -2167,7 +2176,7 @@ packages:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
     dev: true
 
-  /react-avatar@5.0.3(@babel/runtime@7.22.6)(core-js-pure@3.31.0)(prop-types@15.8.1)(react@18.2.0):
+  /react-avatar@5.0.3(@babel/runtime@7.22.6)(core-js-pure@3.31.1)(prop-types@15.8.1)(react@18.2.0):
     resolution: {integrity: sha512-DNc+qkWH9QehSEZqHBhqpXWsPY+rU9W7kD68QFHfu8Atfsvx/3ML0DzAePgTUd96nCXQQ3KZMcC3LKYT8FiBIg==}
     peerDependencies:
       '@babel/runtime': '>=7'
@@ -2176,7 +2185,7 @@ packages:
       react: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
     dependencies:
       '@babel/runtime': 7.22.6
-      core-js-pure: 3.31.0
+      core-js-pure: 3.31.1
       is-retina: 1.0.3
       md5: 2.3.0
       prop-types: 15.8.1
