@@ -32,7 +32,6 @@ const Editor = () => {
       function handleErrors(e) {
         console.log("socket error", e);
         toast.error("Socket Connection failed Connecting Again");
-        // reactNavigator("/");
       }
       // Establish connections
       socketRef.current.emit(ACTIONS.JOIN, {
@@ -71,6 +70,18 @@ const Editor = () => {
   if (!location.state.userName) {
     <Navigate to="/" />;
   }
+  async function copyRoomId() {
+    try {
+      await navigator.clipboard.writeText(roomId);
+      toast.success("Room ID copied to clipboard");
+    } catch (err) {
+      toast.error("Error while copying room id");
+    }
+  }
+  function leaveRoomId() {
+    toast.success("You left the room");
+    return reactNavigator("/classroom");
+  }
   return (
     <div className="editor-main">
       <div className="editor-control">
@@ -86,8 +97,8 @@ const Editor = () => {
           })}
         </div>
         <div className="editor-btn">
-          <button>Click Me</button>
-          <button>Click me</button>
+          <button onClick={copyRoomId}>Copy Room ID</button>
+          <button onClick={leaveRoomId}>Leave Room</button>
         </div>
       </div>
 

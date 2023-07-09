@@ -4,7 +4,7 @@ import "./EditorPane.css";
 // import { javascript } from "@codemirror/lang-javascript";
 import Codemirror from "codemirror";
 import "codemirror/lib/codemirror.css";
-import "codemirror/theme/dracula.css";
+import "codemirror/theme/ayu-mirage.css";
 import "codemirror/mode/javascript/javascript";
 import "codemirror/addon/edit/closetag";
 import "codemirror/addon/edit/closebrackets";
@@ -25,7 +25,7 @@ const EditorPane = ({ socketRef, roomId, onCodeChange }) => {
         document.getElementById("realtimeEditor"),
         {
           mode: { name: "javascript", json: true },
-          theme: "dracula",
+          theme: "ayu-mirage",
           autoCloseTags: true,
           autoCloseBrackets: true,
           lineNumbers: true,

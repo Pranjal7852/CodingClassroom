@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
+import { navbarContext } from "../../context/NavbarContext";
 import { Link } from "react-router-dom";
 import "./Home.css";
+import { useEffect } from "react";
 
 const Home = () => {
+  const [navState, setNavState] = useContext(navbarContext);
+  useEffect(() => {
+    setNavState(true);
+  }, []);
   return (
     <div className="home">
       <div className="header">
