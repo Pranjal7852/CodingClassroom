@@ -1,30 +1,66 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import "./EditorPane.css";
-import CodeMirror from "@uiw/react-codemirror";
-import { javascript } from "@codemirror/lang-javascript";
-import {
-  xcodeLight,
-  xcodeLightInit,
-  xcodeDark,
-  xcodeDarkInit,
-} from "@uiw/codemirror-theme-xcode";
+// import CodeMirror from "@uiw/react-codemirror";
+// import { javascript } from "@codemirror/lang-javascript";
+import Codemirror from "codemirror";
+import "codemirror/lib/codemirror.css";
+import "codemirror/theme/dracula.css";
+import "codemirror/mode/javascript/javascript";
+import "codemirror/addon/edit/closetag";
+import "codemirror/addon/edit/closebrackets";
+// import {
+//   xcodeLight,
+//   xcodeLightInit,
+//   xcodeDark,
+//   xcodeDarkInit,
+// } from "@uiw/codemirror-theme-xcode";
 
 import { useEffect } from "react";
 
-const EditorPane = () => {
-  return (
-    <CodeMirror
-      value="console.log('hello world!');"
-      height="500px"
-      extensions={[javascript({ jsx: true })]}
-      theme={xcodeDarkInit({
-        settings: {
-          caret: "#c6c6c6",
-          fontFamily: "monospace",
-        },
-      })}
-    />
-  );
+const EditorPane = ({ socketRef, roomId, onCodeChange }) => {
+  const editorRef = useRef(null);
+  useEffect(() => {
+    async function init() {
+      editorRef.current = Codemirror.fromTextArea(
+        document.getElementById("realtimeEditor"),
+        {
+          mode: { name: "javascript", json: true },
+          theme: "dracula",
+          autoCloseTags: true,
+          autoCloseBrackets: true,
+          lineNumbers: true,
+        }
+      );
+
+      editorRef.current.on("change", (instance, changes) => {
+        const { origin } = changes;
+        const code = instance.getValue();
+        onCodeChange(code);
+        if (origin !== "setValue") {
+          socketRef.current.emit("code-change", {
+            roomId,
+            code,
+          });
+        }
+      });
+    }
+    init();
+  }, []);
+
+  useEffect(() => {
+    if (socketRef.current) {
+      socketRef.current.on("code-change", ({ code }) => {
+        if (code !== null) {
+          editorRef.current.setValue(code);
+        }
+      });
+    }
+
+    return () => {
+      socketRef.current.off("code-change");
+    };
+  }, [socketRef.current]);
+  return <textarea id="realtimeEditor"></textarea>;
 };
 
 export default EditorPane;

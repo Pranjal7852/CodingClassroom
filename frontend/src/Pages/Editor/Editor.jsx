@@ -16,7 +16,9 @@ import { toast } from "react-toastify";
 
 const Editor = () => {
   const [navState, setNavState] = useContext(navbarContext);
+  const [client, setClient] = useState([]);
   const socketRef = useRef(null);
+  const codeRef = useRef(null);
   const location = useLocation();
   const { roomId } = useParams();
   const reactNavigator = useNavigate();
@@ -44,6 +46,10 @@ const Editor = () => {
           console.log(`${userName} joined the room`);
         }
         setClient(clients);
+        socketRef.current.emit("sync-code", {
+          code: codeRef.current,
+          socketId,
+        });
       });
       // Listening for disconting
       socketRef.current.on("disconnected", ({ socketId, userName }) => {
@@ -54,9 +60,14 @@ const Editor = () => {
       });
     }
     init();
+    // Clean up function
+    return () => {
+      socketRef.current.disconnect();
+      socketRef.current.off("joined");
+      socketRef.current.off("disconnected");
+    };
   }, []);
 
-  const [client, setClient] = useState([]);
   if (!location.state.userName) {
     <Navigate to="/" />;
   }
@@ -81,7 +92,13 @@ const Editor = () => {
       </div>
 
       <div className="editor-window">
-        <EditorPane />
+        <EditorPane
+          socketRef={socketRef}
+          roomId={roomId}
+          onCodeChange={(code) => {
+            codeRef.current = code;
+          }}
+        />
       </div>
     </div>
   );
