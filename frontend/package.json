@@ -13,12 +13,9 @@
   },
   "dependencies": {
     "@codemirror/lang-javascript": "^6.1.9",
-    "@uiw/codemirror-theme-github": "^4.21.7",
-    "@uiw/codemirror-theme-xcode": "^4.21.7",
-    "@uiw/react-codemirror": "^4.21.7",
+    "npm-install-peers": "^4.21.7",
     "axios": "^1.4.0",
     "codemirror": "5",
-    "npm-install-peers": "^1.2.2",
     "react": "^18.2.0",
     "react-avatar": "^5.0.3",
     "react-dom": "^18.2.0",
