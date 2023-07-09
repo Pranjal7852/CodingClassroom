@@ -32,19 +32,31 @@ function getAllConnectedClients(roomId) {
 }
 io.on("connection", (socket) => {
   console.log("A user connected", socket.id);
+  // Listening on join
   socket.on("join", ({ roomId, userName }) => {
     userSocketMap[socket.id] = userName;
     socket.join(roomId);
     const clients = getAllConnectedClients(roomId);
-    console.log(clients);
     clients.forEach(({ socketId }) => {
+      // emiting on joined
       io.to(socketId).emit("joined", {
         clients,
         userName,
         socketId,
       });
-      console.log("joined emited");
     });
+  });
+
+  socket.on("disconnecting", () => {
+    const rooms = [...socket.rooms];
+    rooms.forEach((roomId) => {
+      socket.in(roomId).emit("disconnected", {
+        socketId: socket.id,
+        userName: userSocketMap[socket.id],
+      });
+    });
+    delete userSocketMap[socket.id];
+    socket.leave();
   });
 });
 const port = process.env.PORT || 5000;

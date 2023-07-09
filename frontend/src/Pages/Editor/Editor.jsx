@@ -45,6 +45,13 @@ const Editor = () => {
         }
         setClient(clients);
       });
+      // Listening for disconting
+      socketRef.current.on("disconnected", ({ socketId, userName }) => {
+        toast.warning(`${userName} left the room`);
+        setClient((prev) => {
+          return prev.filter((client) => client.socketId !== socketId);
+        });
+      });
     }
     init();
   }, []);
