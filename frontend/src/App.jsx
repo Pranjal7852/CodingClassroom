@@ -9,6 +9,7 @@ import "./App.css";
 import { Router } from "react-router-dom";
 import { navbarContext, NavbarProvider } from "./context/NavbarContext";
 import Editor from "./Pages/Editor/Editor";
+import Video from "./Pages/Video/Video";
 
 function App() {
   const [navState, setNavState] = useContext(navbarContext);
@@ -19,6 +20,7 @@ function App() {
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/classroom" element={<ClassRoom></ClassRoom>}></Route>
         <Route path="/coding" element={<Coding></Coding>}></Route>
+        <Route path="/video" element={<Video></Video>}></Route>
         <Route path="/editor/:roomId" element={<Editor></Editor>}></Route>
       </Routes>
       <ToastContainer />
