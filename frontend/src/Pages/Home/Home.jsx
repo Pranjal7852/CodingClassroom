@@ -216,28 +216,20 @@ const Home = () => {
         </div>
       </div>
       <div className="features">
-        <h1 className="home-heading-hollow"> &lt; Developers /&gt;</h1>
+        <h1 className="home-heading-hollow"> &lt; Developer /&gt;</h1>
         <div className="dev-con">
           <div className="neo-card-1">
             <h3>Pranjal Goyal</h3>
-            <img src="./images/pranjal.jpg"></img>
+            <img src="./images/pranjal2.jpg"></img>
             <p>
               I'm a Full Stack Developer with a passion for UI effects,
               animations and creating intuitive user experiences with scalable
               backend.
             </p>
           </div>
-          <div className="neo-card-1">
-            <h3>Kshitij Roodkee</h3>
-            <img src="./images/kshitij.png"></img>
-            <p>
-              I'm aspiring to become Full Stack Developer and python developer.
-              Want to make the world aesthetic and cool
-            </p>
-          </div>
         </div>
       </div>
-      <div className="footer">Made with ❤ | © CodeClassroom 2022</div>
+      <div className="footer">Made with ❤ | © CodeClassroom 2023</div>
     </div>
   );
 };

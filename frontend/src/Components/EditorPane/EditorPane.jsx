@@ -60,7 +60,7 @@ const EditorPane = ({ socketRef, roomId, onCodeChange }) => {
       socketRef.current.off("code-change");
     };
   }, [socketRef.current]);
-  return <textarea id="realtimeEditor"></textarea>;
+  return <textarea id="realtimeEditor" rows="4" cols="10"></textarea>;
 };
 
 export default EditorPane;

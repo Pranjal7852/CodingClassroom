@@ -1,11 +1,15 @@
 .navbar {
   display: flex;
   position: fixed;
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
-  padding: 1rem 0;
+  padding: 10px 8rem;
   justify-content: space-between;
   align-items: center;
+  z-index: 10;
+  border-bottom: 1px solid grey;
+  background-color: #262f34;
+  box-shadow: 0px 2px 5px #262f34;
 }
 .navbar ul {
   display: flex;
@@ -26,11 +30,10 @@
 }
 .navbar .logo {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   align-items: center;
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 2rem;
+  cursor: pointer;
 }
 
 .navbar .logo img {

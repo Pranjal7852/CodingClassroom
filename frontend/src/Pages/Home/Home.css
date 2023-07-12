@@ -27,6 +27,7 @@
 .home {
   background-color: #262f34;
   padding: 0 10%;
+  padding-top: 10%;
 }
 
 .home .header {
@@ -54,7 +55,7 @@
 .home-heading-hollow {
   font-size: 5rem;
   font-weight: 500;
-
+  margin: 4rem 0;
   text-align: left;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -72,21 +73,10 @@
   position: relative;
   margin: 2rem 0;
 }
-.home .features::before {
-  content: "";
-  position: absolute;
-  height: 2px;
-  width: 50%;
-  background-color: var(--text-white);
-  bottom: -10px;
-  transform: translateX(-50%);
-  left: 50%;
-  opacity: 0.5;
-}
 .home .features .cards-con {
   display: flex;
   justify-content: space-between;
-  margin: 1rem 0;
+  margin: 2rem 0;
 }
 .home .neo-card-1 {
   display: flex;

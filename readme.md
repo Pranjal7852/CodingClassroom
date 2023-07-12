@@ -79,4 +79,3 @@ When the host starts the call/meeting, the platform will start to save the live 
 ## Contributors
 
 1. [Pranjal Goyal](https://github.com/Pranjal7852)
-2. [KShitij Roodkee](https://github.com/horizenight)
