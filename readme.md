@@ -1,6 +1,6 @@
 # CodeClassroom Video-Editor-Classroom SPA application
 
-Link for the Application 🖐️ [here](https://www.codingclassroom.live/).
+Link for the Application 🖐️ [here](https://codingclassroomv2.netlify.app/).
 
 YT video of working project 📹 [here](https://www.youtube.com/watch?v=_5j5SvJh5UE)
 
@@ -15,28 +15,39 @@ The problem with these platforms that users who enter the conversation late are 
 ## 🍾 Installation using command Line
 
 ```
-git clone https://github.com/horizenight/Electorthon4.0\
+git clone https://github.com/Pranjal7852/CodingClassroom
 
-npm install
+// Frontned Setup
+cd frontend
+pnpm install
+pnpm run dev
 
-npm run start
+// Backend Setup
+cd backend
+pnpm i
+node server.js
+
 ```
 
-**NOTE** - You will `.env` file to make API request.
+**NOTE** - You will need an `.env` file to make API request to the backend server. Create a new env file in the frontend folder.
+
+```
+REACT_APP_BACKEND_URL="YOUR FRONTEND LOCAL HOST ADDRESS" // for vite is it - http://localhost:5173
+PORT=YOUR PORT NUMBER WHERE BACKEND IS RUNNING // default 5000
+```
 
 ## 🐊 Technology's Used
 
 1. [React.JS](https://reactjs.org/) - Front End JS Library.
-2. [Twilio API](https://www.twilio.com/docs/usage/api) - Used for establishing an WEB-RTC between nodes.
-3. [Symbl.io](https://github.com/) - Used for creating Transcripts of voice during Video Conference.
-4. [Firestore Authen](https://firebase.google.com/) - Used in classroom for Organized rooms and valid users.
-5. [Rapid API](https://rapidapi.com/judge0-official/api/judge0-ce) - API fetching using [Axios]() for code Compilation and Questions
+2. [Socket.IO](https://socket.io/) - Used for creating web sockets between client and server.
+3. [React Toastify](https://www.npmjs.com/package/react-toastify) - Used for creating alert divs and modals throughout the application.
+4. [UUID](https://www.npmjs.com/package/uuid) - Used for creating unique room id for every client using the app.
+5. [Rapid API](https://rapidapi.com/judge0-official/api/judge0-ce) - API fetching using [Axios]() for code Compilation and Questions in practice tab.
 6. [MaterialUI](https://mui.com/) - Ui library for clean and modern look to Web Application
 7. [Netlify](https://www.netlify.com/) - Deployment of this project is done throught Netlify.
-8. [Cockroach DB](https://www.cockroachlabs.com/) - Used for fetching question of DSA with answers on editor page.
-9. [SASS](https://sass-lang.com/) - Preporcessor for CSS for less compilation during Runtime.
-10. [Express.JS](https://www.expressjs.com/) - used for Server creation on [NODE>JS](https://nodejs.org/)
-11. [Godaddy](https://godaddy.com/) - domain providing client
+8. [SASS](https://sass-lang.com/) - Preporcessor for CSS for less compilation during Runtime.
+9. [Express.JS](https://www.expressjs.com/) - used for Server creation on [NODE>JS](https://nodejs.org/)
+10. [Code Mirror](https://codemirror.net/) - used for code editor of the app to give it real IDE look and feel.
 
 ## ⚙ What it does
 
@@ -69,12 +80,6 @@ When the host starts the call/meeting, the platform will start to save the live 
 1. ![image](https://user-images.githubusercontent.com/68412756/154853188-0fc00d5f-03b2-446e-821e-35e7a9ec56d1.png)
 
 2. ![image](https://user-images.githubusercontent.com/68412756/154853234-35af4ee9-1bf7-4c53-9b6e-5c4dcf9bc4b8.png)
-
-3. ![image](https://user-images.githubusercontent.com/68412756/154853627-84acabe4-cb86-4dd1-acde-528d345938c0.png)
-
-4. ![image](https://user-images.githubusercontent.com/68412756/154853596-054ddb25-8342-4304-8ac4-aa5e9b4b6c22.png)
-
-5. ![image](https://user-images.githubusercontent.com/68412756/154853641-74120aca-9aaf-4ead-93e4-6440292d7505.png)
 
 ## Contributors
 
