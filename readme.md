@@ -1,4 +1,4 @@
-# CodeClassroom Video-Editor-Classroom SPA application
+<img width="1671" alt="Screenshot 2023-07-12 at 2 58 52 PM" src="https://github.com/Pranjal7852/CodingClassroom/assets/68412756/3b13cbae-6c94-4d67-bbb8-a8091a28881d"># CodeClassroom Video-Editor-Classroom SPA application
 
 Link for the Application 🖐️ [here](https://codingclassroomv2.netlify.app/).
 
@@ -80,6 +80,12 @@ When the host starts the call/meeting, the platform will start to save the live 
 1. ![image](https://user-images.githubusercontent.com/68412756/154853188-0fc00d5f-03b2-446e-821e-35e7a9ec56d1.png)
 
 2. ![image](https://user-images.githubusercontent.com/68412756/154853234-35af4ee9-1bf7-4c53-9b6e-5c4dcf9bc4b8.png)
+3.  <img width="1679" alt="image" src="https://github.com/Pranjal7852/CodingClassroom/assets/68412756/88cd4105-d363-454e-b73e-8503c6987647">
+4. <img width="1671" alt="Screenshot 2023-07-12 at 2 58 52 PM" src="https://github.com/Pranjal7852/CodingClassroom/assets/68412756/8b2dee43-f955-471c-89db-6c8e5b24c102">
+5. <img width="1671" alt="Screenshot 2023-07-12 at 2 58 52 PM" src="https://github.com/Pranjal7852/CodingClassroom/assets/68412756/db7af75d-9d14-447e-8f4c-6341c0fae450">
+
+
+
 
 ## Contributors
 
