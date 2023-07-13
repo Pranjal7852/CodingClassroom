@@ -1,9 +1,8 @@
 import express from "express";
 import http from "http";
 import { Server } from "socket.io";
-import dotenv from "dotenv";
+import "dotenv/config";
 import cors from "cors";
-dotenv.config();
 
 const app = express();
 
@@ -13,7 +12,7 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173", // Update with your Vite app's URL
+    origin: process.env.FRONTEND_HOSTED_URL, // Update with your Vite app's URL
     methods: ["GET", "POST"],
     allowedHeaders: ["my-custom-header"],
     credentials: true,
@@ -33,13 +32,13 @@ function getAllConnectedClients(roomId) {
 io.on("connection", (socket) => {
   console.log("A user connected", socket.id);
   // Listening on join
-  socket.on("join", ({ roomId, userName }) => {
+  socket.on(process.env.JOIN, ({ roomId, userName }) => {
     userSocketMap[socket.id] = userName;
     socket.join(roomId);
     const clients = getAllConnectedClients(roomId);
     clients.forEach(({ socketId }) => {
       // emiting on joined
-      io.to(socketId).emit("joined", {
+      io.to(socketId).emit(process.env.JOINED, {
         clients,
         userName,
         socketId,
@@ -47,17 +46,17 @@ io.on("connection", (socket) => {
     });
   });
 
-  socket.on("code-change", ({ roomId, code }) => {
-    socket.in(roomId).emit("code-change", { code });
+  socket.on(process.env.CODE_CHANGE, ({ roomId, code }) => {
+    socket.in(roomId).emit(process.env.CODE_CHANGE, { code });
   });
-  socket.on("sync-code", ({ socketId, code }) => {
-    io.to(socketId).emit("code-change", { code });
+  socket.on(process.env.SYNC_CODE, ({ socketId, code }) => {
+    io.to(socketId).emit(process.env.CODE_CHANGE, { code });
   });
 
-  socket.on("disconnecting", () => {
+  socket.on(process.env.DISCONNECTING, () => {
     const rooms = [...socket.rooms];
     rooms.forEach((roomId) => {
-      socket.in(roomId).emit("disconnected", {
+      socket.in(roomId).emit(process.env.DISCONNECTED, {
         socketId: socket.id,
         userName: userSocketMap[socket.id],
       });
@@ -66,7 +65,7 @@ io.on("connection", (socket) => {
     socket.leave();
   });
 });
-const port = process.env.PORT || 5000;
+const port = process.env.PORT;
 
 server.listen(port, () => {
   console.log(`server working on port ${port}`);
