@@ -9,10 +9,10 @@ const Video = () => {
         Video Tutorial of the app and how to setup it locally{" "}
       </div>
       <iframe
-        width="945"
-        height="658"
-        src="https://www.youtube.com/embed/H5v3kku4y6Q"
-        title="Harry Styles - As It Was (Official Video)"
+        width="1223"
+        height="688"
+        src="https://www.youtube.com/embed/smregH5X_uc"
+        title="Coding Classroom RTC Coding Platform | Setup and Tutorial | MLH Fellowship Project Showcase"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen
