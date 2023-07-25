@@ -3,7 +3,7 @@
 Link for the Application 🖐️ [here](https://codingclassroomv2.netlify.app/).
 P.S - Only frontend part is hosted for the time being. I my still figiring out an good alternavtive for good old Heroku backend deploying services. However you only need to run backend code (which i have pointed to local host) in order to app on netlify.
 
-YT video of working project 📹 [here](https://www.youtube.com/watch?v=_5j5SvJh5UE)
+YT video of working project 📹 [here](https://www.youtube.com/watch?v=smregH5X_uc)
 
 The pandemic has been a challenge for all of us and since we didn’t get to meet our friends like the pre-covid days, we devised new ways of keeping contact with them. Being a coder, what’s better than having coding sessions with our friends/peers/random folks alongside chatting, talking and even sharing our screens to resolve each others' doubts, all on a single platform.
 </br>
