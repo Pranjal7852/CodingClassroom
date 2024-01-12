@@ -6,7 +6,7 @@ import cors from "cors";
 
 const app = express();
 
-app.use(cors);
+app.use(cors());
 
 const server = http.createServer(app);
 
@@ -66,7 +66,9 @@ io.on("connection", (socket) => {
   });
 });
 const port = process.env.PORT;
-
+app.get("/", (req, res) => {
+  res.json({ message: "Welcome to the coding classroom web server!" });
+});
 server.listen(port, () => {
   console.log(`server working on port ${port}`);
 });
